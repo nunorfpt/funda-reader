@@ -10,9 +10,19 @@ $config = [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'a6k8kyjuJW2BAWqqboBE1W85gja39bkn',
+            'enableCookieValidation'=>true,
+            'class' => 'yii\web\Request',
+            'enableCsrfValidation' => true,
         ],
         'cache' => [
-            'class' => 'yii\caching\FileCache',
+            'class' => '\yii\caching\MemCache',
+            'servers' => [
+                [
+                    'host' => 'localhost',
+                    'port' => 11211,
+                    'weight' => 100,
+                ],
+            ],
         ],
         'user' => [
             'identityClass' => 'app\models\User',
